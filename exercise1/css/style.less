@@ -1,0 +1,152 @@
+@import 'reset';
+@import 'mixins';
+
+body {
+  font-family: sans-serif;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+h1,
+p {
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.banner {
+  position: relative;
+  overflow: hidden;
+
+  .banner__text {
+    position: relative;
+    padding: 25px;
+    min-height: 400px;
+    color: #fff;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 3;
+
+    .flex();
+    .flex-direction(column);
+    .flex-justify(center);
+  }
+
+  &:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/600x600.png');
+    background-size: cover;
+    background-position: center;
+    font-size: 0;
+    content: '';
+  }
+
+  h1 {
+    margin-bottom: 20px;
+    font-size: 50px;
+    font-weight: 800;
+  }
+
+  p {
+    font-size: 25px;
+    letter-spacing: 1px;
+  }
+}
+
+.articles {
+  padding: 40px 25px;
+
+  .flex();
+  .flex-direction(column);
+  .flex-justify(center);
+}
+
+article {
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 40px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  a {
+    display: inline-block;
+    border: 3px solid #000;
+    padding: 12px 15px;
+    border-radius: 50px;
+    max-width: 110px;
+    margin: 0 auto;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    &:hover {
+      background: #000;
+      color: #fff;
+    }
+  }
+}
+
+
+@media screen and (min-width: 650px) {
+  .banner {
+    &:before {
+      background-image: url('../images/1920x650.png');
+      transform: scale(3);
+    }
+
+    .banner__text {
+      min-height: 510px;
+    }
+
+    h1 {
+      margin-bottom: 0;
+      font-size: 60px;
+    }
+
+    p {
+      font-size: 30px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .articles {
+    max-width: 1000px;
+    margin: auto;
+    .flex-direction(row);
+  }
+
+  article {
+    flex: 1;
+    margin: 0 40px 0 0;
+
+    .flex();
+    .flex-direction(column);
+    .flex-justify(space-between);
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}

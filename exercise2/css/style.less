@@ -1,0 +1,154 @@
+@import 'mixins';
+
+@tab-title-color: #2c3e50;
+
+body {
+  font-family: sans-serif;
+  padding: 0 20px 20px;
+}
+
+h1 {
+  margin: 40px 0;
+  text-align: center;
+}
+
+#content {
+  max-width: 900px;
+  margin: auto;
+}
+
+.accordion {
+  border-radius: 8px;
+  border: 1px solid gray;
+  overflow: hidden;
+
+  label.title {
+    margin: 0;
+    padding: 15px;
+    background: @tab-title-color;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+
+    .flex();
+    .flex-justify(space-between);
+
+    &:hover {
+      background: darken(@tab-title-color, 10%);
+    }
+
+    &::after {
+      width: 15px;
+      height: 15px;
+      text-align: center;
+      transition: all .35s;
+      content: "\276F";
+    }
+  }
+
+  .section {
+    .content {
+      max-height: 0;
+      padding: 0 15px;
+      color: @tab-title-color;
+      background: white;
+      transition: max-height 0.5s ease-in-out;
+      overflow: hidden;
+    }
+
+    &.active {
+      label.title {
+        background: darken(@tab-title-color, 10%);
+
+        &::after {
+          transform: rotate(90deg);
+        }
+      }
+
+      .content {
+        display: block;
+        max-height: 1000px;
+        padding: 15px;
+      }
+    }
+  }
+
+  .content {
+    display: none;
+  }
+}
+
+.tabs {
+  display: none;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+
+  .tab {
+    margin: 0;
+    padding: 15px;
+    background: @tab-title-color;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+
+    &.active {
+      background: darken(@tab-title-color, 10%);
+    }
+  }
+}
+
+.bonus-content {
+  margin-top: 40px;
+  border-radius: 8px;
+  padding: 15px;
+  border: 1px solid gray;
+
+  p {
+    margin-top: 0;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  span {
+    display: inline-block;
+    padding: 5px;
+    margin: 3px;
+    border-radius: 8px;
+    background: lightgray;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  ul {
+    padding-left: 20px;
+
+    li {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .tabs {
+    .inline-flex();
+
+    .tab {
+      display: inline-block;
+    }
+  }
+
+  .accordion {
+    border-radius: 0 8px 8px 8px;
+
+    .section {
+      label.title {
+        display: none;
+      }
+
+      &.big-active .content {
+        display: block;
+        max-height: 1000px
+      }
+    }
+  }
+}

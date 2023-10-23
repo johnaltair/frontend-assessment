@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>John Altair Gensola -- FE Assessment #2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div id="content">
+    <h1>John Altair Gensola -- FE Assessment #2</h1>
+    <div class="tabs-accordion">
+        <div class="tabs" id="tabs"></div>
+        <div class="accordion" id="accordion"></div>
+    </div>
+    <div class="bonus-content">
+        <p>Explain why the result of <span>('b' + 'a' + + 'a' + 'a').toLowerCase()</span> is <span>banana</span>.</p>
+        <ul class="answer">
+            <li><span>'b' + 'a'</span> results in <span>"ba"</span> because the <span>+</span> operator is used for
+                string concatenation.
+            </li>
+            <li><span>+ 'a'</span> attempts to convert the string <span>"a"</span> into a number. Since it's not a valid
+                number, it evaluates to <span>NaN</span> (Not-a-Number).
+            </li>
+            <li><span>('ba' + NaN)</span> combines the string <span>"ba"</span> with <span>NaN</span>, which results in
+                the string <span>"baNaN"</span>.
+            </li>
+            <li><span>.toLowerCase()</span> is called on the string <span>"baNaN"</span>, which converts all characters
+                to lowercase.
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="js/script.js"></script>
+</body>
+</html>
